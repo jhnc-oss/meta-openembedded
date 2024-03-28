@@ -27,7 +27,7 @@ PACKAGECONFIG ??= "${@bb.utils.contains('PTEST_ENABLED', '1', 'ptest','', d)}"
 PACKAGECONFIG[ptest] = "-DGSL_TEST=ON,-DGSL_TEST=OFF,googletest"
 
 # clang disagrees with https://github.com/google/googletest/pull/3457
-CXXFLAGS:append:toolchain-clang = " -Wno-error=switch-default"
+CXXFLAGS:append:toolchain-clang = " -Wno-error=switch-default -Wno-error=disabled-macro-expansion"
 
 do_install_ptest() {
     install -d ${D}${bindir}
