@@ -6,9 +6,9 @@ DEPENDS = "exiv2 python3-pygobject-native"
 
 GTKDOC_MESON_OPTION = "gtk_doc"
 
-inherit gnomebase gobject-introspection gtk-doc python3native vala
+inherit gnomebase gobject-introspection gtk-doc python3native vala gi-docgen
 
-SRC_URI[archive.sha256sum] = "0913c53daabab1f1ab586afd55bb55370796f2b8abcc6e37640ab7704ad99ce1"
+SRC_URI[archive.sha256sum] = "045ec4584d32963719e0722929f40f1d19566d4582e1eee4604be97e8c3eb740"
 
 EXTRA_OEMESON = " \
     ${@bb.utils.contains('GI_DATA_ENABLED', 'True', '-Dvapi=true', '-Dvapi=false', d)} \
