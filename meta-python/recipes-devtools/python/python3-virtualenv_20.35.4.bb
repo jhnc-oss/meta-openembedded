@@ -6,6 +6,7 @@ HOMEPAGE = "https://github.com/pypa/virtualenv"
 LICENSE = "MIT"
 LIC_FILES_CHKSUM = "file://LICENSE;md5=0ce089158cf60a8ab6abb452b6405538"
 
+SRC_URI += "file://CVE-2026-22702.patch"
 SRC_URI[sha256sum] = "643d3914d73d3eeb0c552cbb12d7e82adf0e504dbf86a3182f8771a153a1971c"
 
 BBCLASSEXTEND = "native nativesdk"
