@@ -5,9 +5,10 @@ being useful purely as a system analysis tool."
 HOMEPAGE = "http://tomoyo.sourceforge.jp/"
 SECTION = "System Environment/Kernel"
 
-SRC_URI = "http://jaist.dl.sourceforge.jp/tomoyo/70710/${BP}-20210910.tar.gz"
+SRC_URI = "${SOURCEFORGE_MIRROR}/tomoyo/${BP}.tar.gz"
 SRC_URI[sha256sum] = "47a12cdb1fe7bbd0b2e3486150fe1e754fa9c869aeefd42fd311c4022b78010a"
 
+PV .= "-20210910"
 S = "${UNPACKDIR}/${BPN}"
 
 LICENSE = "GPL-2.0-only"
