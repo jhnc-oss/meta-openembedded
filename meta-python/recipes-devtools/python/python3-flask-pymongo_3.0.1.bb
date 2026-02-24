@@ -5,13 +5,17 @@ SECTION = "devel/python"
 LICENSE = "BSD-2-Clause"
 LIC_FILES_CHKSUM = "file://flask_pymongo/wrappers.py;beginline=1;endline=24;md5=424c4e1047d28e01b4e4634a069c019d"
 
-SRC_URI[sha256sum] = "620eb02dc8808a5fcb90f26cab6cba9d6bf497b15032ae3ca99df80366e33314"
+SRC_URI[sha256sum] = "d225b51c21ceca2e670e6cca79b5c584ad17b96252b48e84e3b423ddb73304cc"
 
-PYPI_PACKAGE = "Flask-PyMongo"
+PYPI_PACKAGE = "flask_pymongo"
 UPSTREAM_CHECK_PYPI_PACKAGE = "${PYPI_PACKAGE}"
 
-inherit pypi setuptools3
+inherit pypi python_setuptools_build_meta python_hatchling
 
-DEPENDS = "python3-vcversioner python3-vcversioner-native"
+DEPENDS = " \
+    python3-vcversioner \
+    python3-vcversioner-native \
+    python3-hatchling-native \
+"
 
 RDEPENDS:${PN} = "python3-pymongo python3-flask"
