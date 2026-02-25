@@ -4,10 +4,10 @@ SECTION = "libs"
 LICENSE = "MIT"
 LIC_FILES_CHKSUM = "file://LICENSE;md5=8325a5ce4414c65ffdda392e0d96a9ff"
 
-SRC_URI = "git://github.com/Thalhammer/jwt-cpp.git;branch=master;protocol=https \
+SRC_URI = "git://github.com/Thalhammer/jwt-cpp.git;branch=master;protocol=https;tag=v${PV} \
             "
 
-SRCREV = "e71e0c2d584baff06925bbb3aad683f677e4d498"
+SRCREV = "b0ea29a58fc852a67d4e896d266880c2c63b0c4c"
 
 
 DEPENDS = "openssl"
