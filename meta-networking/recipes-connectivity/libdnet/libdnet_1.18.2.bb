@@ -4,9 +4,9 @@ SECTION = "libs"
 LICENSE = "BSD-3-Clause"
 LIC_FILES_CHKSUM = "file://LICENSE;md5=0036c1b155f4e999f3e0a373490b5db9"
 
-SRC_URI = "git://github.com/ofalk/libdnet.git;nobranch=1;protocol=https"
+SRC_URI = "git://github.com/ofalk/libdnet.git;nobranch=1;protocol=https;tag=${BPN}-${PV}"
 
-SRCREV = "3dfbe889b1f65077efe579da34fc1d6819fcb7f3"
+SRCREV = "024ab07d88a2f70ab161cfc0a41f460cb046133f"
 
 UPSTREAM_CHECK_GITTAGREGEX = "libdnet-(?P<pver>\d+(\.\d+)+)"
 
