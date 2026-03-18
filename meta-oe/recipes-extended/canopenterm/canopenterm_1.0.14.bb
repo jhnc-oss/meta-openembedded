@@ -13,15 +13,16 @@ BUGTRACKER = "https://github.com/CANopenTerm/CANopenTerm/issues"
 LICENSE = "MIT"
 LIC_FILES_CHKSUM = "file://LICENSE.md;md5=bd2edc721b4a0289efe949bdbe7dda79"
 
-DEPENDS = "cjson libinih libsdl3 lua libsocketcan pocketpy"
+DEPENDS = "cjson libinih libsdl3 lua libsocketcan pocketpy alsa-lib"
 
 SRC_URI = "git://github.com/CANopenTerm/CANopenTerm.git;protocol=https;branch=main;tag=v${PV}"
 
 SRCREV  = "012e48af26b483ead9df1004cfc92e6908b66b24"
 
-inherit cmake ptest
+inherit cmake pkgconfig ptest
 
-EXTRA_OECMAKE += "-DBUILD_YOCTO=ON"
+# Does not compile with clang yes
+TOOLCHAIN = "gcc"
 
 FILES:${PN} += "${bindir}/CANopenTerm ${bindir}/codb2json ${datadir}"
 
