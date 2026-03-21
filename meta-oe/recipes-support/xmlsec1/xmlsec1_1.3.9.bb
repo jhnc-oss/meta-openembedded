@@ -72,3 +72,5 @@ do_install_ptest () {
 }
 
 BBCLASSEXTEND = "native"
+
+TOOLCHAIN = "gcc"
