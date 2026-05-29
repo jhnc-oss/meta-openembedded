@@ -6,7 +6,7 @@ Discovery for IP Version 6 (IPv6). With these \
 advertisements hosts can automatically configure their \
 addresses and some other parameters. They also can \
 choose a default router based on these advertisements."
-HOMEPAGE = "http://www.litech.org/radvd/"
+HOMEPAGE = "https://github.com/radvd-project/radvd"
 SECTION = "net"
 DEPENDS = "flex-native bison-native libdaemon libbsd"
 
@@ -14,14 +14,16 @@ DEPENDS = "flex-native bison-native libdaemon libbsd"
 LICENSE = "radvd"
 LIC_FILES_CHKSUM = "file://COPYRIGHT;md5=73ebbf7182ae996e65e8fadc9a8c45db"
 
-SRC_URI = "http://v6web.litech.org/radvd/dist/radvd-${PV}.tar.gz \
+SRCREV = "a8500f4035b52028c90b0a938dfe8cd65e38fb50"
+SRC_URI = "git://github.com/radvd-project/radvd.git;branch=master;tag=v${PV};protocol=https \
            file://radvd.init \
            file://radvd.service \
            file://volatiles.03_radvd \
            file://radvd.default \
            file://radvd.conf \
            "
-SRC_URI[sha256sum] = "af37c5a81d59f3bdc00d83056606ffa1810d4550beed6caa4f81181246494220"
+
+S = "${WORKDIR}/git"
 
 UPSTREAM_CHECK_URI = "https://github.com/radvd-project/radvd/releases"
 UPSTREAM_CHECK_REGEX = "releases/tag/v(?P<pver>\d+(\.\d+)+)"
