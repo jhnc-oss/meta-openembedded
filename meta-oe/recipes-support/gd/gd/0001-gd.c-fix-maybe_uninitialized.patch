@@ -1,0 +1,26 @@
+From 1bb2911c02193d32f1458b771c485980fd100010 Mon Sep 17 00:00:00 2001
+From: Markus Volk <f_l_k@t-online.de>
+Date: Sat, 30 May 2026 10:12:26 +0200
+Subject: [PATCH] gd.c: fix maybe_uninitialized
+
+Upstream-Status: Pending [https://github.com/libgd/libgd/issues/990]
+---
+ src/gd.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/gd.c b/src/gd.c
+index fd8d1aa2..6ffdd41f 100644
+--- a/src/gd.c
++++ b/src/gd.c
+@@ -2069,7 +2069,7 @@ BGD_DECLARE(void) gdImageArc (gdImagePtr im, int cx, int cy, int w, int h, int s
+ BGD_DECLARE(void) gdImageFilledArc (gdImagePtr im, int cx, int cy, int w, int h, int s, int e,
+ 									int color, int style)
+ {
+-	gdPoint pts[363];
++	gdPoint pts[363] = {0};
+ 	int i, pti;
+ 	int lx = 0, ly = 0;
+ 	int fx = 0, fy = 0;
+-- 
+2.54.0
+
