@@ -38,20 +38,19 @@ DEPENDS:append:class-target = " bash-completion"
 inherit meson gettext update-rc.d systemd gobject-introspection update-alternatives upstream-version-is-even pkgconfig
 
 SRC_URI = " \
-    git://github.com/NetworkManager/NetworkManager.git;protocol=https;branch=nm-1-56;tag=${PV} \
+    git://github.com/NetworkManager/NetworkManager.git;protocol=https;branch=nm-1-58;tag=${PV} \
     file://${BPN}.initd \
     file://enable-dhcpcd.conf \
     file://enable-iwd.conf \
-    file://0002-meson-fix-cross-compilation-issues.patch \
 "
 SRC_URI:append:libc-musl = "${@bb.utils.contains('DISTRO_FEATURES', 'ld-is-lld', ' file://0001-linker-scripts-Do-not-export-_IO_stdin_used.patch', '', d)}"
 
-SRCREV = "56b51b98fbb8627c4c09a483702e18fd8aee7ce1"
+SRCREV = "61302aac7f2e7411f3b42159544926484eacd37e"
 
 # ['auto', 'symlink', 'file', 'netconfig', 'resolvconf']
 NETWORKMANAGER_DNS_RC_MANAGER_DEFAULT ??= "auto"
 
-# ['dhclient', 'dhcpcd', 'internal', 'nettools']
+# ['dhcpcd', 'internal', 'nettools']
 NETWORKMANAGER_DHCP_DEFAULT ??= "internal"
 
 # The default gets detected based on whether /usr/sbin/nft or /usr/sbin/iptables is installed, with nftables preferred.
@@ -96,7 +95,7 @@ PACKAGECONFIG[nss] = "-Dcrypto=nss,,nss"
 PACKAGECONFIG[resolvconf] = "-Dresolvconf=${base_sbindir}/resolvconf,-Dresolvconf=no,,resolvconf"
 PACKAGECONFIG[gnutls] = "-Dcrypto=gnutls,,gnutls"
 PACKAGECONFIG[crypto-null] = "-Dcrypto=null"
-PACKAGECONFIG[wifi] = "-Dwext=true -Dwifi=true,-Dwext=false -Dwifi=false"
+PACKAGECONFIG[wifi] = "-Dwifi=true,-Dwifi=false"
 PACKAGECONFIG[iwd] = "-Diwd=true,-Diwd=false"
 PACKAGECONFIG[ifupdown] = "-Difupdown=true,-Difupdown=false"
 PACKAGECONFIG[cloud-setup] = "-Dnm_cloud_setup=true,-Dnm_cloud_setup=false,jansson"
@@ -109,13 +108,13 @@ PACKAGECONFIG[audit] = "-Dlibaudit=yes,-Dlibaudit=no,audit"
 PACKAGECONFIG[selinux] = "-Dselinux=true,-Dselinux=false,libselinux"
 PACKAGECONFIG[vala] = "-Dvapi=true,-Dvapi=false"
 PACKAGECONFIG[dhcpcd] = "-Ddhcpcd=${base_sbindir}/dhcpcd,-Ddhcpcd=no,,dhcpcd"
-PACKAGECONFIG[dhclient] = "-Ddhclient=yes,-Ddhclient=no,,dhcp"
 PACKAGECONFIG[concheck] = "-Dconcheck=true,-Dconcheck=false"
 PACKAGECONFIG[adsl] = ",,"
 PACKAGECONFIG[wwan] = ",,"
 # The following PACKAGECONFIG is used to determine whether NM is managing /etc/resolv.conf itself or not
 PACKAGECONFIG[man-resolv-conf] = ",,"
 PACKAGECONFIG[nbft] = "-Dnbft=true,-Dnbft=false"
+PACKAGECONFIG[clat] = "-Dclat=true,-Dclat=false,libbpf"
 
 
 PACKAGES =+ " \
@@ -252,9 +251,10 @@ FILES:${PN}-daemon += " \
     ${sysconfdir}/resolv-conf.NetworkManager \
     ${sysconfdir}/sysconfig/network-scripts \
     ${systemd_system_unitdir} \
+    ${systemd_unitdir}/system-generators \
 "
 RDEPENDS:${PN}-daemon += "\
-    ${@bb.utils.contains('PACKAGECONFIG', 'ifupdown', 'bash', '', d)} \
+    bash \
 "
 RRECOMMENDS:${PN}-daemon += "\
     ${NETWORKMANAGER_FIREWALL_DEFAULT} \
