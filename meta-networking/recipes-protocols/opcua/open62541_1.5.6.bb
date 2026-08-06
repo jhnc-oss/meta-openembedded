@@ -3,13 +3,13 @@ HOMEPAGE = "https://github.com/open62541/open62541.git"
 LICENSE = "BSD-3-Clause AND MIT AND MPL-2.0"
 LIC_FILES_CHKSUM = "\
     file://LICENSE;md5=815ca599c9df247a0c7f619bab123dad \
-    file://deps/mdnsd/LICENSE;md5=3bb4047dc4095cd7336de3e2a9be94f0 \
+    file://deps/mdnsd/LICENSE;md5=499b4033f2cdae5ae544018b57f81007 \
     file://deps/mqtt-c/LICENSE;md5=9226377baf0b79174c89a1ab55592456 \
 "
 
 SRCREV_FORMAT = "opcua_mdnsd_ua-nodeset_mqtt-c"
-SRCREV_opcua = "dfd44a234645ed29cc6d190048bc8ae80c5454cd"
-SRCREV_mdnsd = "488d24fb9d427aec77df180268f0291eeee7fb8b"
+SRCREV_opcua = "cd69ed6f6a4d46966f67794e23a7b7b331f7d402"
+SRCREV_mdnsd = "c1be962b37e4b952625d9b0a873e5ca619b1a35a"
 SRCREV_ua-nodeset = "257db9ad98ee7ba4b67d3500b54bfc9d744a36af"
 SRCREV_mqtt-c = "0f4c34c8cc00b16cfee094745d68b8cdbaecd8e0"
 
