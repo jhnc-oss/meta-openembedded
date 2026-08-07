@@ -23,5 +23,13 @@ EXTRA_OECONF += "--with-libpcap=${STAGING_DIR_HOST}${prefix}"
 inherit siteinfo autotools-brokensep
 
 do_install:append() {
+    # configure --with-libpcap=${STAGING_DIR_HOST}${prefix} bakes the absolute
+    # recipe-sysroot path into defines.h's pcap.h include and into
+    # libtcpreplay.pc's Libs.private -L flag, tripping the buildpaths QA
+    # check. Strip it from both the source tree copy (shipped verbatim into
+    # the tcpreplay-src debug package) and the installed copies under ${D}.
     sed -i -e 's:${RECIPE_SYSROOT}::g' ${S}/src/defines.h
+    sed -i -e 's:${RECIPE_SYSROOT}::g' \
+        ${D}${includedir}/tcpreplay/defines.h \
+        ${D}${libdir}/pkgconfig/libtcpreplay.pc
 }
