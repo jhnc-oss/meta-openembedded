@@ -10,7 +10,7 @@ LIC_FILES_CHKSUM = "file://LICENSE;md5=3b06e43f2e368eb8663632d529232353 \
 
 # Dependencies from perfetto/tools/install-build-deps
 SRC_URI:append = " \
-           git://github.com/protocolbuffers/protobuf.git;branch=main;protocol=https;destsuffix=${BB_GIT_DEFAULT_DESTSUFFIX}/buildtools/protobuf;name=protobuf \
+           git://github.com/protocolbuffers/protobuf.git;branch=31.x;protocol=https;destsuffix=${BB_GIT_DEFAULT_DESTSUFFIX}/buildtools/protobuf;name=protobuf \
            git://github.com/abseil/abseil-cpp.git;branch=master;protocol=https;destsuffix=${BB_GIT_DEFAULT_DESTSUFFIX}/buildtools/abseil-cpp;name=abseil \
            git://chromium.googlesource.com/external/github.com/llvm/llvm-project/libcxx.git;protocol=https;destsuffix=${BB_GIT_DEFAULT_DESTSUFFIX}/buildtools/libcxx;branch=main;name=libcxx \
            git://chromium.googlesource.com/external/github.com/llvm/llvm-project/libcxxabi.git;protocol=https;destsuffix=${BB_GIT_DEFAULT_DESTSUFFIX}/buildtools/libcxxabi;branch=main;name=libcxxabi \
