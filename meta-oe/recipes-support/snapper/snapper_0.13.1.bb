@@ -26,6 +26,8 @@ export MKDIR_BIN = "${bindir}/mkdir"
 export TOUCH_BIN = "${bindir}/touch"
 export CP_BIN = "${bindir}/cp"
 export REALPATH_BIN = "${bindir}/realpath"
+export SHA256SUM_BIN = "${bindir}/sha256sum"
+export LS_BIN = "${bindir}/ls"
 
 do_install:append() {
 	install -d ${D}${sysconfdir}/sysconfig
